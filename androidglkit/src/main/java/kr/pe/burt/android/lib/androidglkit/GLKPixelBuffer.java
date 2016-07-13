@@ -1,6 +1,11 @@
 package kr.pe.burt.android.lib.androidglkit;
 
 
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+
+import java.nio.IntBuffer;
+
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
@@ -90,5 +95,35 @@ public class GLKPixelBuffer {
         egl.eglChooseConfig(eglDisplay, attribList, eglConfigs, configSize, numConfig);
 
         return eglConfigs[0]; // Best match is probably the first configuration
+    }
+
+    public void destroy() {
+
+        egl.eglMakeCurrent(eglDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+        egl.eglDestroySurface(eglDisplay, eglSurface);
+        egl.eglDestroyContext(eglDisplay, eglContext);
+        egl.eglTerminate(eglDisplay);
+    }
+
+    public Bitmap getBitmap(GLKRenderer renderer) {
+        renderer.init(null);
+        renderer.onSizeChanged(null, width, height);
+        renderer.update(null, 0);
+
+        return readPixelsIntoBitmap();
+    }
+
+    private Bitmap readPixelsIntoBitmap() {
+        IntBuffer ib = IntBuffer.allocate(width * height);
+        gl.glReadPixels(0, 0, width, height, GL10.GL_RGBA, GL10.GL_UNSIGNED_BYTE, ib);
+        int [] array = ib.array();
+
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        bitmap.copyPixelsFromBuffer(IntBuffer.wrap(array));
+
+        Matrix flip = new Matrix();
+        flip.postScale(1f, -1f);
+        Bitmap flippedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), flip, false);
+        return flippedBitmap;
     }
 }
