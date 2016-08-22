@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        minSdkVersion 11
+        minSdkVersion 17                // because GLES20.glGetActiveAttrib in GLKProgram
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
