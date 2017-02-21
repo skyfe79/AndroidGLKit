@@ -36,19 +36,22 @@ public class Square {
     };
 
     public Square(Context context) {
-        setupShader(context);
-        setupVertexBuffer();
+        if(setupShader(context)) {
+            setupVertexBuffer();
+        }
     }
 
-    private void setupShader(Context context) {
+    private boolean setupShader(Context context) {
         // compile & link shader
         shader = new GLKProgram(
                 GLKShaderUtils.readShaderFileFromRawResource(context, R.raw.simple_vertex_shader),
                 GLKShaderUtils.readShaderFileFromRawResource(context, R.raw.simple_fragment_shader)
         );
+        return shader.isCompiled();
     }
 
     private void setupVertexBuffer() {
+
         // initialize vertex float buffer for shape coordinates
         vertexBuffer = GLKBufferUtils.newFloatBuffer(squareCoords.length);
 
@@ -71,6 +74,7 @@ public class Square {
     }
 
     public void draw() {
+        if( shader.isValid() == false ) return;
 
         shader.begin();
 

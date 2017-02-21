@@ -27,14 +27,15 @@ public class GLKSupportFragment extends Fragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
         glkView.onResume();
     }
 
     @Override
-    public void onStop() {
+    public void onPause() {
+        super.onPause();
         glkView.onPause();
-        super.onStop();
     }
+
 }

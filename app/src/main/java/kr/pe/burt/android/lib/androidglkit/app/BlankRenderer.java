@@ -9,7 +9,7 @@ import kr.pe.burt.android.lib.androidglkit.GLKView;
 /**
  * Created by burt on 2016. 7. 9..
  */
-public class MainRenderer implements GLKRenderer {
+public class BlankRenderer implements GLKRenderer {
 
     @Override
     public void init(GLKView view) {

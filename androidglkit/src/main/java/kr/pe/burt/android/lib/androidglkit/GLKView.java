@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 import javax.microedition.khronos.egl.EGLConfig;
@@ -25,35 +26,6 @@ public class GLKView extends GLSurfaceView implements GLSurfaceView.Renderer {
         super(context, attrs);
 
         init();
-
-
-        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AndroidGLKitAttrs);
-        String rendererName = array.getString(R.styleable.AndroidGLKitAttrs_glk_renderer);
-        if(rendererName == null) {
-            return;
-        }
-
-        try {
-
-            if(rendererName.startsWith("$")) {
-                String packageName = context.getPackageName();
-                rendererName = packageName + "." + rendererName.substring(rendererName.lastIndexOf("$")+1, rendererName.length());
-            }
-
-            Class cls  = Class.forName(rendererName);
-            GLKRenderer renderer = (GLKRenderer)cls.newInstance();
-            setRenderer(renderer);
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            throw new IllegalArgumentException(e.getMessage());
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-            throw new IllegalArgumentException(e.getMessage());
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-            throw new IllegalArgumentException(e.getMessage());
-        }
     }
 
 
@@ -81,17 +53,9 @@ public class GLKView extends GLSurfaceView implements GLSurfaceView.Renderer {
         return elapsedTime;
     }
 
-    public void setRenderer(GLKRenderer renderer) {
+    public void setGLKRenderer(GLKRenderer renderer) {
         rendererNeedsToInit = true;
         this.renderer = renderer;
-        this.renderer.init(this);
-        if(surfaceWidth > 0 && surfaceHeight > 0) {
-            this.renderer.onSizeChanged(this, surfaceWidth, surfaceHeight);
-        }
-
-        // set rendererNeedsToInit to false, renderer.update method is called in the onDrawFrame.
-        rendererNeedsToInit = false;
-
     }
 
     @Override

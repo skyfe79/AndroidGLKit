@@ -18,7 +18,7 @@ public class GLKFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(getLayoutFileResourceId(), container, false);
-        glkView = (GLKView)v.findViewById(R.id.glkView);
+        glkView = (GLKView) v.findViewById(R.id.glkView);
         return v;
     }
 
@@ -27,14 +27,14 @@ public class GLKFragment extends Fragment {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
         glkView.onResume();
     }
 
     @Override
-    public void onStop() {
+    public void onPause() {
+        super.onPause();
         glkView.onPause();
-        super.onStop();
     }
 }

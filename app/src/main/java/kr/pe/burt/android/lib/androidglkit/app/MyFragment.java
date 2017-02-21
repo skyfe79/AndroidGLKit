@@ -9,6 +9,6 @@ public class MyFragment extends GLKFragment {
     @Override
     public void onStart() {
         super.onStart();
-        glkView.setRenderer(new MainRenderer());
+        glkView.setGLKRenderer(new BlankRenderer());
     }
 }
