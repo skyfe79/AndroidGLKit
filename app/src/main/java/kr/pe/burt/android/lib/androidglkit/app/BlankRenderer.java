@@ -17,8 +17,8 @@ public class BlankRenderer implements GLKRenderer {
     }
 
     @Override
-    public void onSizeChanged(GLKView view, int width, int hegith) {
-        GLES20.glViewport(0, 0, width, hegith);
+    public void onSizeChanged(GLKView view, int width, int height) {
+        GLES20.glViewport(0, 0, width, height);
     }
 
     @Override

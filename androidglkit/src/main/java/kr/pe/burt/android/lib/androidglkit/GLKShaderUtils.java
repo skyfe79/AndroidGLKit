@@ -1,5 +1,6 @@
 package kr.pe.burt.android.lib.androidglkit;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.res.AssetManager;
 
