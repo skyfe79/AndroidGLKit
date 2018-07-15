@@ -53,7 +53,7 @@ If you extends activity or fragment that GLKit provides, you don't need to have 
 
 ### Custom Layout file
 
-Of course, You don't like above approch. Therefore, You can use custom layout file like below:
+Of course, You don't like the above approach. Therefore, You can use custom layout file like below:
 
 ```java
 public class SquareActivity extends GLKAppCompatActivity {
