@@ -10,8 +10,8 @@ AndroidGLKit provides OpenGL ES 2.0 boilerplate codes for Android. You can imple
 
 ```groovy
 dependencies {
-    ...
-	compile 'kr.pe.burt.android.lib:androidglkit:1.0.0'
+	...
+	implementation 'kr.pe.burt.android.lib:androidglkit:1.0.0'
 }
 ```
 
