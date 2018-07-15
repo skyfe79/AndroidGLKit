@@ -132,7 +132,7 @@ public void onStart() {
 }
 ```
 
-That's it :) If you run the above code, You can see the result screen like below:
+It's all :) If you run the above code, You can see the result screen like below:
 
 ![](art/img_01.png)
 
