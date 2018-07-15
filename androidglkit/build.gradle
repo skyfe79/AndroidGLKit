@@ -14,7 +14,7 @@ publish {
     userOrg = 'skyfe79'
     groupId = 'kr.pe.burt.android.lib'
     artifactId = 'androidglkit'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = 'AndroidGLKit provides OpenGL ES 2.0 boilerplate codes for Android.'
     website = 'https://github.com/skyfe79/AndroidGLKit'
 }
@@ -27,7 +27,7 @@ android {
         minSdkVersion 17                // because GLES20.glGetActiveAttrib in GLKProgram
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0.1"
     }
     buildTypes {
         release {
