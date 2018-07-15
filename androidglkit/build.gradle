@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         minSdkVersion 17                // because GLES20.glGetActiveAttrib in GLKProgram

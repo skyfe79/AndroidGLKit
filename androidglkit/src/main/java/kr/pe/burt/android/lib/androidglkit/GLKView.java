@@ -24,7 +24,6 @@ public class GLKView extends GLSurfaceView implements GLSurfaceView.Renderer {
 
     public GLKView(Context context, AttributeSet attrs) {
         super(context, attrs);
-
         init();
     }
 
@@ -39,6 +38,8 @@ public class GLKView extends GLSurfaceView implements GLSurfaceView.Renderer {
 
         // set renderer
         setRenderer(this);
+
+        lastTimeMillis = System.currentTimeMillis();
     }
 
 
@@ -48,14 +49,22 @@ public class GLKView extends GLSurfaceView implements GLSurfaceView.Renderer {
     private long elapsedTime = 0L;
     private boolean rendererNeedsToInit = true;
     private GLKRenderer renderer = null;
-    private int surfaceWidth = 0, surfaceHeight = 0;
     protected long getElapsedTime() {
         return elapsedTime;
     }
 
     public void setGLKRenderer(GLKRenderer renderer) {
-        rendererNeedsToInit = true;
-        this.renderer = renderer;
+        if(this.renderer == null) {
+            rendererNeedsToInit = true;
+            this.renderer = renderer;
+        }
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        lastTimeMillis = System.currentTimeMillis();
     }
 
     @Override
@@ -72,9 +81,6 @@ public class GLKView extends GLSurfaceView implements GLSurfaceView.Renderer {
     public void onSurfaceChanged(GL10 gl10, int width, int height) {
         if(renderer != null) {
             renderer.onSizeChanged(this, width, height);
-        } else {
-            surfaceWidth = width;
-            surfaceHeight = height;
         }
     }
 

@@ -2,11 +2,11 @@ package kr.pe.burt.android.lib.androidglkit.app;
 
 import kr.pe.burt.android.lib.androidglkit.GLKAppCompatActivity;
 
-public class CustomLayoutActivity extends GLKAppCompatActivity {
+public class SquareActivity extends GLKAppCompatActivity {
 
     @Override
     protected int getLayoutFileResourceId() {
-        return R.layout.activity_custom_layout;
+        return R.layout.activity_square;
     }
 
     @Override

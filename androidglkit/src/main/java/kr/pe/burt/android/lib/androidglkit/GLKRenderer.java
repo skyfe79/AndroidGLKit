@@ -7,5 +7,5 @@ package kr.pe.burt.android.lib.androidglkit;
 public interface GLKRenderer  {
     void init(GLKView view);
     void onSizeChanged(GLKView view, int width, int height);
-    void update(GLKView view, long dt);
+    void update(GLKView view, long currentTimeMillis);
 }

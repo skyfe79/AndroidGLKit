@@ -13,8 +13,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onCustomLayoutClicked(View sender) {
-        Intent intent = new Intent(this, CustomLayoutActivity.class);
+    public void onBlankClicked(View sender) {
+        Intent intent = new Intent(this, BlankActivity.class);
+        startActivity(intent);
+    }
+
+    public void onSquareClicked(View sender) {
+        Intent intent = new Intent(this, SquareActivity.class);
         startActivity(intent);
     }
 
@@ -22,4 +27,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, OffscreenRenderingActivity.class);
         startActivity(intent);
     }
+
+    public  void onTextureClicked(View sender) {
+        Intent intent = new Intent(this, TextureActivity.class);
+        startActivity(intent);
+    }
+
+
 }

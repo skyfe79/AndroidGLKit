@@ -82,14 +82,23 @@ public class GLKTexture {
 
     public static GLKTexture texture(Bitmap bitmap, boolean isBottomLeftOrigin, OnTexParameters parameters) {
         Bitmap flippedBitmap = null;
+        try {
 
-        if(isBottomLeftOrigin) {
-            Matrix flip = new Matrix();
-            flip.postScale(1f, -1f);
-            flippedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), flip, false);
-            return texture(flippedBitmap, parameters);
+            if (isBottomLeftOrigin) {
+                Matrix flip = new Matrix();
+                flip.postScale(1f, -1f);
+                flippedBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), flip, false);
+                return texture(flippedBitmap, parameters);
+            }
+            return texture(bitmap, parameters);
+            
+        } finally {
+
+            if(flippedBitmap != null) {
+                flippedBitmap.recycle();
+            }
+
         }
-        return texture(bitmap, parameters);
     }
 
     private GLKTexture(int textureName) {

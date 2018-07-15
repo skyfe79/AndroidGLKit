@@ -11,16 +11,27 @@
     android:orientation="vertical"
     tools:context="kr.pe.burt.android.lib.androidglkit.app.MainActivity">
 
-
     <Button
-        android:text="CustomLayout"
+        android:text="Blank"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onCustomLayoutClicked" />
+        android:onClick="onBlankClicked" />
+
+    <Button
+        android:text="Square"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onSquareClicked" />
 
     <Button
         android:text="OffscreenRendering"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onOffscreenRenderingClicked"/>
+
+    <Button
+        android:text="Texture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onTextureClicked"/>
 </LinearLayout>
