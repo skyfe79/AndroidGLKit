@@ -2,6 +2,14 @@
 
 AndroidGLKit provides OpenGL ES 2.0 boilerplate codes for Android. You can implement OpenGL 2.0 things easyly by using AndroidGLKit. 
 
+## Setup Gradle
+
+```groovy
+dependencies {
+    ...
+	compile 'kr.pe.burt.android.lib:androidglkit:1.0.0'
+}
+```
 
 ## How to Use
 
@@ -9,7 +17,7 @@ AndroidGLKit provides OpenGL ES 2.0 boilerplate codes for Android. You can imple
 
 AndroidGLKit provides GLKActivity or GLKFragments. Also it has  GLKAppCompatActivity and GLKSupportFragment. You can extends above activity or fragment like below.
 
-```
+```java
 public class TextureActivity extends GLKAppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +34,7 @@ public class TextureActivity extends GLKAppCompatActivity {
 
 Notice that above code does not have set layout code `setContentView(R.layout.texture_activity)`. Because AndroidGLKit provides default layout file as `common_glk_view.xml` like below:
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <kr.pe.burt.android.lib.androidglkit.GLKView
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -43,7 +51,7 @@ If you extends activity or fragment that GLKit provides, you don't need to have 
 
 Of course, You don't like above approch. Therefore, You can use custom layout file like below:
 
-```
+```java
 public class SquareActivity extends GLKAppCompatActivity {
 
     @Override
@@ -61,7 +69,7 @@ public class SquareActivity extends GLKAppCompatActivity {
 
 Override `getLayoutFileResourceId` method and return resource id for your layout file. `R.layout.activity_square` looks like below:
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -87,7 +95,7 @@ Important thing is GLKView must have `android:id` as glkView. It is rule for usi
 
 GLKRenderer takes responsibility for draw something on OpenGL ES Context. Maybe your opengl codes to be in here. The Simplest renderer is blank renderer like below:
 
-```
+```java
 public class BlankRenderer implements GLKRenderer {
 
     @Override
@@ -112,7 +120,7 @@ public class BlankRenderer implements GLKRenderer {
 
 If you have implemented GLKRenderer, you should set it to GLKView like below:
 
-```
+```java
 @Override
 public void onStart() {
     super.onStart();
@@ -140,7 +148,7 @@ That's it :) If you run the above code, You can see the result screen like below
 
 You can get bitmap from OpenGL ES context easily like below:
 
-```
+```java
 @Override
 protected void onStart() {
     super.onStart();

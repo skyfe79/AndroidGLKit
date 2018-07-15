@@ -1,4 +1,23 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.8.1'
+    }
+}
+
+publish {
+    userOrg = 'skyfe79'
+    groupId = 'kr.pe.burt.android.lib'
+    artifactId = 'androidglkit'
+    publishVersion = '1.0.0'
+    desc = 'AndroidGLKit provides OpenGL ES 2.0 boilerplate codes for Android.'
+    website = 'https://github.com/skyfe79/AndroidGLKit'
+}
 
 android {
     compileSdkVersion 23
@@ -8,7 +27,7 @@ android {
         minSdkVersion 17                // because GLES20.glGetActiveAttrib in GLKProgram
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
     }
     buildTypes {
         release {
@@ -17,6 +36,11 @@ android {
         }
     }
 }
+
+tasks.withType(Javadoc).all {
+    enabled = false
+}
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
